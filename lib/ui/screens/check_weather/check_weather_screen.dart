@@ -19,11 +19,11 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
     return  Scaffold(
       body: Stack(
         children: [
-          header(),
+          // header(),
           const SelectedDateWidget(),
-          const TemperatureStatus(),
+          // const TemperatureStatus(),
           const OtherStatus(),
-          const ForecastList()
+          // const ForecastList()
         ],
       ),
 
