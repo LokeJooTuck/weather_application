@@ -17,18 +17,16 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Stack(
+
+      body: Column(
         children: [
           // header(),
-          const SelectedDateWidget(),
-          // const TemperatureStatus(),
-          const OtherStatus(),
-          // const ForecastList()
+          Flexible(child: const SelectedDateWidget()),
+           Flexible(child: TemperatureStatus()),
+           Flexible(child: OtherStatus()),
+           Flexible(child: ForcastList())
         ],
       ),
-
-
-
     );
   }
 }

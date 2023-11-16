@@ -8,7 +8,6 @@ class SelectedDateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      
       children: [
         Flexible(child: Text(DateFormat('MMMM dd').format(DateTime.now()))),
         const SizedBox(height: 10,),

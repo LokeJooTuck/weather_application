@@ -20,6 +20,7 @@ class _OtherStatusState extends State<OtherStatus> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         ..._buildStatusList(),
       ],
