@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-List<Widget> _buildStatusList(){
+List<Widget> _buildStatusList(BuildContext context){
   return [
-    _buildStatusIcon(icon: Icons.water_drop_outlined, status: 'HUMINITY', value: '56%'),
-    _buildStatusIcon(icon: Icons.wind_power, status: 'WIND', value: '4.64km/h'),
-    _buildStatusIcon(icon: Icons.thermostat, status: 'FEELS LIKE', value: '34'),
+    _buildStatusIcon(context, icon: Icons.water_drop_outlined, status: 'HUMINITY', value: '56%'),
+    _buildStatusIcon(context, icon: Icons.wind_power_outlined, status: 'WIND', value: '4.64km/h'),
+    _buildStatusIcon(context, icon: Icons.thermostat_outlined, status: 'FEELS LIKE', value: '34'),
 
   ];
 }
@@ -20,23 +20,27 @@ class _OtherStatusState extends State<OtherStatus> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        ..._buildStatusList(),
+        ..._buildStatusList(context),
       ],
     );
   }
 }
 
-Widget _buildStatusIcon({required IconData icon, required String status, required String value}){
+Widget _buildStatusIcon(BuildContext context,{required IconData icon, required String status, required String value}){
   return Column(
-    mainAxisAlignment: MainAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    mainAxisSize: MainAxisSize.min,
     children: [
       // 1. icon
       // 2. weather status
       // 3. value
-      Icon(icon),
-      Text(status),
-      Text(value),
+      Icon(icon, size: 45,color: Colors.white),
+      SizedBox(height: 3,),
+      Text(status, style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),),
+      SizedBox(height: 3,),
+      Text(value, style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white)),
 
     ],
   );
