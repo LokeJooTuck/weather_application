@@ -16,15 +16,15 @@ class _ForcastCardState extends State<ForcastCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 90,
-      height: 100,
+      width: MediaQuery.of(context).size.width * 0.2,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('$formattedDate', style: TextStyle(color: Colors.black),),
+          Text('$formattedDate', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),),
           Container( width: 50, height: 50,child: Placeholder()),
-          Text(widget.weather.temperature.toString(), style: TextStyle(color: Colors.black),),
-          Text(widget.weather.windSpeed.toString(), style: TextStyle(color: Colors.black),),
-          Text('km/h', style: TextStyle(color: Colors.black),)
+          Text('22 °C', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),),  
+          Text('1-5', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),),
+          Text('km/h',)
       
         ],
       ),

@@ -16,15 +16,33 @@ class CheckWeatherScreen extends StatefulWidget {
 class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: header(),
       body: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
-          // header(),
-          Flexible(child: const SelectedDateWidget()),
-           Flexible(child: TemperatureStatus()),
-           Flexible(child: OtherStatus()),
-           Flexible(child: ForcastList())
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+          ),
+          const Flexible(child: SelectedDateWidget()),
+           Container(
+            height: 270, 
+            child: TemperatureStatus()),
+          // Container(
+          //   height: 320,
+          //   child: TemperatureStatus()),
+          const Flexible(
+            child: OtherStatus()),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+          ),
+          const Flexible(
+            flex: 2,
+            child: ForcastList()),
+          //  Container(
+          //   height: MediaQuery.of(context).size.height*0.25,
+          //   child: ForcastList())
         ],
       ),
     );

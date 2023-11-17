@@ -6,6 +6,9 @@ class TemperatureStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      
       children: [
         Container(
           width: 50,
@@ -15,32 +18,37 @@ class TemperatureStatus extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const SizedBox(
-        width: 80,
-         child: Stack(
-             alignment: Alignment.center,
-             children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '25',
-                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          Positioned(
-            top: 0,
-            right: 0,
-            child: Text(
-              '°C',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-            ),
-          ),
-             ],
+        Flexible(
+                 child: Text(
+                   'Clear',
+                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white,fontWeight: FontWeight.bold, ),
+                 ),
+               ),
+         Expanded(
+           child: Container(
+             child: Padding(
+               padding: const EdgeInsets.only( left :30.0),
+               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                 children: [
+                   Text(
+                     '25',
+                     style: Theme.of(context).textTheme.displayLarge?.copyWith(color: Colors.white,fontWeight: FontWeight.w400, fontSize: 86),
+                   ),
+                   Align(
+                     alignment: Alignment.topRight,
+                     child: Text(
+                               '°C',
+                               style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white,fontWeight: FontWeight.bold),
+                             ),
+                   ),
+                 ],
+               ),
+             ),
            ),
-       )
+         )
       ],
     );
   }

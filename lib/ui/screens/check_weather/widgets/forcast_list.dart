@@ -36,15 +36,22 @@ class ForcastList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListView.separated(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return ForcastCard(weather: forecastList[index]);
-        },
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
-        itemCount: 4,
+      width: MediaQuery.of(context).size.width*0.9,
+      height: 500,
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Color(0XFF535353),
+        borderRadius: BorderRadius.circular(20),
       ),
+      alignment: Alignment.center,
+      child: ListView.builder(
+    
+      scrollDirection: Axis.horizontal,
+      itemCount: 4,
+      itemBuilder: (context, index) {
+        return ForcastCard(weather: forecastList[index]);
+      },
+      )
     );
   }
 }
