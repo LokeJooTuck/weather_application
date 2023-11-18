@@ -13,7 +13,12 @@ class TemperatureStatus extends StatelessWidget {
         Container(
           width: 50,
           height: 50,
-          child: Placeholder(),
+          child: Image.asset(
+        'assets/images/weather_icons/Sunny.png',
+        fit: BoxFit.cover,
+        height: double.infinity,
+        width: double.infinity,
+      ),
         ),
         const SizedBox(
           height: 10,

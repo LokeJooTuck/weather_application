@@ -1,3 +1,5 @@
+import 'package:path/path.dart';
+
 import '../../constants/enums/weather_state.dart';
 
 class WMOService {
@@ -48,5 +50,40 @@ class WMOService {
         return WeatherState.unknown;
     }
   }
-}
 
+  // call this function to get the image related to the weather state code
+
+  String getWeatherImage(WeatherState weatherState) {
+    DateTime now = DateTime.now();
+    bool isDay = now.hour >= 6 && now.hour <= 18;
+
+    String basePath = 'assets/images/weather-icons';
+
+    switch (weatherState) {
+      case WeatherState.clearSky:
+        return join(basePath, 'Sunny.png');
+      case WeatherState.partlyCloudy:
+        String imageName =
+            isDay ? 'PartlyCloudyDay.png' : 'PartlyCloudyNight.png';
+        return join(basePath, imageName);
+      case WeatherState.foggy:
+        return join(basePath, 'Fog.png');
+      case WeatherState.drizzle:
+      case WeatherState.freezingDrizzle:
+      case WeatherState.rain:
+      case WeatherState.freezingRain:
+        return join(basePath, 'HeavyRain.png');
+      case WeatherState.snowFall:
+      case WeatherState.snowGrains:
+        return join(basePath, 'ModSnow.png');
+      case WeatherState.rainShowers:
+        return join(basePath, 'OccLightRain.png');
+      case WeatherState.snowShowers:
+        return join(basePath, 'ModSleet.png');
+      case WeatherState.thunderstorm:
+        return join(basePath, 'CloudRainThunder.png');
+      default:
+        return join(basePath, 'unknown.png');
+    }
+  }
+}
