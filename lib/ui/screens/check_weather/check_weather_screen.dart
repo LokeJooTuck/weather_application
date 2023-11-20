@@ -38,9 +38,7 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
               const Flexible(child: SelectedDateWidget()),
-               Container(
-                height: 270, 
-                child: TemperatureStatus()),
+               Flexible(child: TemperatureStatus()),
               // Container(
               //   height: 320,
               //   child: TemperatureStatus()),
