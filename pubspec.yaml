@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl: ^0.18.1
   google_fonts: ^6.1.0
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
@@ -62,9 +63,18 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/weather_icons/Sunny.png
+    - assets/images/weather_icons/PartlyCloudyDay.png
+    - assets/images/weather_icons/PartlyCloudyNight.png
+    - assets/images/weather_icons/Fog.png
+    - assets/images/weather_icons/HeavyRain.png
+    - assets/images/weather_icons/ModSnow.png
+    - assets/images/weather_icons/OccLightRain.png
+    - assets/images/weather_icons/ModSleet.png
+    - assets/images/weather_icons/CloudRainThunder.png
+    - assets/images/weather_icons/unknown.png
+    - assets/images/default_background.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -16,35 +16,61 @@ class CheckWeatherScreen extends StatefulWidget {
 class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: header(),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
-          ),
-          const Flexible(child: SelectedDateWidget()),
-           Container(
-            height: 270, 
-            child: TemperatureStatus()),
-          // Container(
-          //   height: 320,
-          //   child: TemperatureStatus()),
-          const Flexible(
-            child: OtherStatus()),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
-          ),
-          const Flexible(
-            flex: 2,
-            child: ForcastList()),
-          //  Container(
-          //   height: MediaQuery.of(context).size.height*0.25,
-          //   child: ForcastList())
-        ],
+    var height = MediaQuery.of(context).size.height;
+    return Stack(
+      children: [
+         // Background Image with Dark Overlay
+      Image.asset(
+        'assets/images/default_background.jpg',
+        fit: BoxFit.cover,
+        height: double.infinity,
+        width: double.infinity,
       ),
+      Container(
+        color: Colors.black.withOpacity(0.3),
+      ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: header(),
+          body: Column(
+            children: [
+              SizedBox(
+                height: height * 0.1,
+              ),
+              SizedBox(
+                height: height * 0.1,
+                child: const Flexible(child: SelectedDateWidget())),
+               SizedBox(
+                height: height * 0.3,
+                 child: Flexible(
+                  
+                  flex: 2, child: TemperatureStatus()),
+               ),
+              SizedBox(
+                height: height * 0.03,
+              
+              ),
+              SizedBox(
+                height: height * 0.1,
+                child: const Flexible(
+                  flex: 2,
+                  child: OtherStatus()),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+    
+              SizedBox(
+                height: height * 0.2,
+                child: const Expanded(
+                  flex: 2,
+                  child: ForcastList()),
+              ),
+          
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
