@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../data/models/weather.dart';
+
 AppBar header() {
   return AppBar(
     backgroundColor: Colors.transparent,
@@ -19,7 +21,11 @@ AppBar header() {
     ),
     actions: [
       IconButton(
-        onPressed: () {},
+        onPressed: () {
+          final weather = Weather.fromJson(latitude: 'adf', locationAreaName: "asdf", longitude: '12396', backgroundImage: '', weatherAPIResponseJsonObject:  jsonResponse);
+          print(weather);
+
+        },
         icon: const Icon(
           Icons.menu,
           color: Colors.white,
