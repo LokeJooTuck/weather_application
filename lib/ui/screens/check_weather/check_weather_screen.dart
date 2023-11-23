@@ -37,27 +37,27 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
               SizedBox(
                 height: height * 0.1,
               ),
-              SizedBox(height: height * 0.1, child: const Flexible(child: SelectedDateWidget())),
               SizedBox(
+                height: height * 0.1,
+                child: SelectedDateWidget()),
+               SizedBox(
                 height: height * 0.3,
-                child: Flexible(flex: 2, child: TemperatureStatus()),
-              ),
+                 child: TemperatureStatus(),
+               ),
               SizedBox(
                 height: height * 0.03,
               ),
               SizedBox(
                 height: height * 0.1,
-                child: const Flexible(flex: 2, child: OtherStatus()),
+                child: OtherStatus(),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
+                height: MediaQuery.of(context).size.height * 0.03,
               ),
     
               // SizedBox(
               //   height: height * 0.2,
-              //   child: const Expanded(
-              //     flex: 2,
-              //     child: ForcastList()),
+              //   child: ForcastList(),
               // ),
           
             ],

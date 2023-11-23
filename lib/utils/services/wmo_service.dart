@@ -1,4 +1,5 @@
 import '../../constants/enums/weather_state.dart';
+import '../../data/models/weather.dart';
 
 class WMOService {
   static WeatherState interpretWMOCode(int wmoCode) {

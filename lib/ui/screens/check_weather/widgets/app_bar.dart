@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../data/models/weather.dart';
+import '../../../../page_navigation.dart';
+import '../../add_location/add_new_location_screen.dart';
 
 import '../../../../page_navigation.dart';
 import '../../add_location/add_new_location_screen.dart';

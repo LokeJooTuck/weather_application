@@ -1,15 +1,69 @@
-import 'dart:convert';
-
-import 'package:weather_application/constants/enums/weather_state.dart';
+import 'package:hive/hive.dart';
 import 'package:weather_application/utils/services/wmo_service.dart';
 
+part 'weather.g.dart';
 
-class Weather {
+@HiveType(typeId: 3)
+enum WeatherState {
+  @HiveField(0)
+  clearSky,
+  
+  @HiveField(1)
+  partlyCloudy,
+  
+  @HiveField(2)
+  foggy,
+  
+  @HiveField(3)
+  drizzle,
+  
+  @HiveField(4)
+  freezingDrizzle,
+  
+  @HiveField(5)
+  rain,
+  
+  @HiveField(6)
+  freezingRain,
+  
+  @HiveField(7)
+  snowFall,
+  
+  @HiveField(8)
+  snowGrains,
+  
+  @HiveField(9)
+  rainShowers,
+  
+  @HiveField(10)
+  snowShowers,
+  
+  @HiveField(11)
+  thunderstorm,
+  
+  @HiveField(12)
+  unknown,
+}
+
+
+@HiveType(typeId: 0) // The typeId should be unique across all HiveObject classes
+class Weather extends HiveObject {
+  @HiveField(0)
   final String latitude;
+
+  @HiveField(1)
   final String longitude;
+
+  @HiveField(2)
   final String locationAreaName;
+
+  @HiveField(3)
   final DateTime lastUpdated;
+
+  @HiveField(4)
   final String backgroundImage;
+
+  @HiveField(5)
   final List<WeatherForecast> weatherForecast;
 
   Weather({
@@ -34,7 +88,9 @@ class Weather {
       weatherForecast: forecasts,
     );
   }
-
+  
+  
+ 
   //toString method to print the weather object
   @override
   String toString() {
@@ -42,14 +98,24 @@ class Weather {
   }
 }
 
-
-
-class WeatherForecast {
+@HiveType(typeId: 1) // The typeId should be unique across all HiveObject classes
+class WeatherForecast extends HiveObject {
+  @HiveField(0)
   final DateTime date;
+
+  @HiveField(1)
   final WeatherState weatherState;
+
+  @HiveField(2)
   final double temperature;
+
+  @HiveField(3)
   final double apparentTemperature;
+
+  @HiveField(4)
   final int humidity;
+
+  @HiveField(5)
   final double windSpeed;
 
   WeatherForecast({
@@ -87,8 +153,6 @@ class WeatherForecast {
         humidityOneDay.add(relativeHumidity2m[i * 24 + j]);
       }
       
-      
-      print(DateTime.now().toString());
       final date = DateTime.parse(time[i]);
       final weatherState = weatherCode[i];
       final temperature = temperature2mMax[i];

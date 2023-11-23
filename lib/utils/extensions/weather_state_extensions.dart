@@ -1,6 +1,7 @@
 // extensions/weather_state_extensions.dart
 
 import '../../constants/enums/weather_state.dart';
+import '../../data/models/weather.dart';
 
 extension WeatherStateString on WeatherState {
   String toDisplayString() {
