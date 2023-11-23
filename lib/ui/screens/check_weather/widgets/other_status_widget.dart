@@ -22,7 +22,24 @@ class _OtherStatusState extends State<OtherStatus> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        ..._buildStatusList(context),
+        Expanded(
+          child: _buildStatusIcon(context,
+              icon: Icons.water_drop_outlined,
+              status: 'HUMINITY',
+              value: '56%'),
+        ),
+        Expanded(
+          child: _buildStatusIcon(context,
+              icon: Icons.wind_power_outlined,
+              status: 'WIND',
+              value: '4.64km/h'),
+        ),
+        Expanded(
+          child: _buildStatusIcon(context,
+              icon: Icons.thermostat_outlined,
+              status: 'FEELS LIKE',
+              value: '34'),
+        ),
       ],
     );
   }

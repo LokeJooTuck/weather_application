@@ -1,57 +1,49 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:weather_application/ui/screens/check_weather/widgets/forcast_card.dart';
 
-import '../../../../data/models/weather.dart';
-import 'forcast_card.dart';
+class ForecastList extends StatefulWidget {
+  const ForecastList({super.key});
 
-// Generate dummy data for Weather class
-Weather dummyWeather = Weather(
-  longitude: '-74.006',
-  latitude: '40.7128',
-  locationAreaName: 'New York City',
-  temperature: 25.5,
-  humidity: 65.0,
-  weatherState: 'Sunny',
-  windSpeed: 10.0,
-  lastUpdated: DateTime.now(),
-);
+  @override
+  State<ForecastList> createState() => _ForecastListState();
+}
 
-List<Weather> forecastList = List.generate(4, (index) {
-  return Weather(
-    longitude: dummyWeather.longitude,
-    latitude: dummyWeather.latitude,
-    locationAreaName: dummyWeather.locationAreaName,
-    temperature: dummyWeather.temperature + Random().nextDouble() * 5 - 2.5,
-    humidity: dummyWeather.humidity + Random().nextDouble() * 10 - 5,
-    weatherState: index % 2 == 0 ? 'Sunny' : 'Cloudy',
-    windSpeed: dummyWeather.windSpeed + Random().nextDouble() * 2 - 1,
-    lastUpdated: dummyWeather.lastUpdated.add(Duration(days: index + 1)),
-  );
-});
 
-class ForcastList extends StatelessWidget {
-  const ForcastList({super.key});
+class _ForecastListState extends State<ForecastList> {
+  final List<Forecast> forecastList = [] ;
+  
+  @override
+  void initState() {
+    super.initState();
+    forecastList.add(Forecast(date: DateTime.now(), icon: 'assets/images/sunny.png', temperature: '22', windSpeed: '1.5'));
+    forecastList.add(Forecast(date: DateTime.now(), icon: 'assets/images/sunny.png', temperature: '22', windSpeed: '1.5'));
+    forecastList.add(Forecast(date: DateTime.now(), icon: 'assets/images/sunny.png', temperature: '22', windSpeed: '1.5'));
+    forecastList.add(Forecast(date: DateTime.now(), icon: 'assets/images/sunny.png', temperature: '22', windSpeed: '1.5'));
+    forecastList.add(Forecast(date: DateTime.now(), icon: 'assets/images/sunny.png', temperature: '22', windSpeed: '1.5'));
+    forecastList.add(Forecast(date: DateTime.now(), icon: 'assets/images/sunny.png', temperature: '22', windSpeed: '1.5'));
+    forecastList.add(Forecast(date: DateTime.now(), icon: 'assets/images/sunny.png', temperature: '22', windSpeed: '1.5'));
+    forecastList.add(Forecast(date: DateTime.now(), icon: 'assets/images/sunny.png', temperature: '22', windSpeed: '1.5'));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width*0.9,
-      height: 500,
-      padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Color(0XFF535353),
-        borderRadius: BorderRadius.circular(20),
+        color: Colors.black.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(50),
       ),
-      alignment: Alignment.center,
-      child: ListView.builder(
-    
-      scrollDirection: Axis.horizontal,
-      itemCount: 4,
-      itemBuilder: (context, index) {
-        return ForcastCard(weather: forecastList[index]);
-      },
-      )
+      child: ListView.builder(itemBuilder: (context, index){
+        return ForecastCard(date: forecastList[index].date, icon: forecastList[index].icon, temperature: forecastList[index].temperature, windSpeed: forecastList[index].windSpeed);
+      }),
     );
   }
+}
+
+class Forecast{
+  final DateTime date;
+  final String icon;
+  final String temperature;
+  final String windSpeed;
+
+  const Forecast({required this.date, required this.icon, required this.temperature, required this.windSpeed});
 }

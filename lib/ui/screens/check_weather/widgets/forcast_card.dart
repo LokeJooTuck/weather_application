@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_application/data/models/weather.dart';
 
-class ForcastCard extends StatefulWidget {
-  const ForcastCard({super.key, required this.weather});
-  final Weather weather;
+class ForecastCard
+ extends StatelessWidget {
+  final DateTime date;
+  final String icon;
+  final String temperature;
+  final String windSpeed;
 
-  @override
-  State<ForcastCard> createState() => _ForcastCardState();
-}
-
-class _ForcastCardState extends State<ForcastCard> {
-  String formattedDate = DateFormat('EEE d').format(DateTime.now());
+  const ForecastCard 
+  ({super.key, required this.date, required this.icon, required this.temperature, required this.windSpeed});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.2,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text('$formattedDate', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),),
-          Container( width: 50, height: 50,child: Placeholder()),
-          Text('22 °C', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),),  
-          Text('1-5', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),),
-          Text('km/h',)
-      
-        ],
-      ),
+    return  Column(
+      children: [
+        // 1. day/ date
+        // 2. weather status
+        // 3. temperature
+        // Text(DateFormat('EEE dd').format(DateTime.now())),
+        // const Icon(Icons.wb_sunny),
+        // const Text('22'),
+        // const Text('1.5'),
+        // const Text('km/h')
+        Text(DateFormat('EEE dd').format(date)),
+        Image.asset(icon),
+        Text(temperature),
+        Text(windSpeed),
+        const Text('km/h')
+      ],
     );
   }
 }
-
