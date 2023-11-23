@@ -18,7 +18,7 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: header(),
+      appBar: header(context),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -26,20 +26,15 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
             height: MediaQuery.of(context).size.height * 0.05,
           ),
           const Flexible(child: SelectedDateWidget()),
-           Container(
-            height: 270, 
-            child: TemperatureStatus()),
+          Container(height: 270, child: TemperatureStatus()),
           // Container(
           //   height: 320,
           //   child: TemperatureStatus()),
-          const Flexible(
-            child: OtherStatus()),
+          const Flexible(child: OtherStatus()),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.05,
           ),
-          const Flexible(
-            flex: 2,
-            child: ForcastList()),
+          const Flexible(flex: 2, child: ForcastList()),
           //  Container(
           //   height: MediaQuery.of(context).size.height*0.25,
           //   child: ForcastList())

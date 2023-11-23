@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-AppBar header() {
+import '../../../../page_navigation.dart';
+import '../../add_location/add_new_location_screen.dart';
+
+AppBar header(BuildContext context) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
@@ -19,7 +22,9 @@ AppBar header() {
     ),
     actions: [
       IconButton(
-        onPressed: () {},
+        onPressed: () {
+          navigateToPage(context, SavedLocationsPage());
+        },
         icon: const Icon(
           Icons.menu,
           color: Colors.white,
