@@ -6,16 +6,12 @@ class SelectedDateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 4.5,
-
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(DateFormat('MMMM dd').format(DateTime.now()),style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),),
-          const SizedBox(height: 10,),
-          Flexible(child: Text('Updated ${DateFormat('dd/MM/yyyy hh:mm a').format(DateTime.now())}',style: Theme.of(context).textTheme.titleMedium,)),
-        ],  ),
-    );
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Flexible(child: Text(DateFormat('MMMM dd').format(DateTime.now()),style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),)),
+        const SizedBox(height: 10,),
+        Flexible(child: Text('Updated ${DateFormat('dd/MM/yyyy hh:mm a').format(DateTime.now())}',style: Theme.of(context).textTheme.titleMedium,)),
+      ],  );
   }
 }

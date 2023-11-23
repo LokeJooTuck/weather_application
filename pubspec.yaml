@@ -40,6 +40,13 @@ dependencies:
   google_fonts: ^6.1.0
   path: ^1.8.3
   hive: ^2.2.3
+  google_fonts: ^4.0.4
+
+  # A composable, multi-platform, Future-based API for HTTP requests.
+  # https://pub.dev/packages/http
+  http: ^0.13.4
+
+  path:
 
 dev_dependencies:
   flutter_test:
@@ -64,24 +71,13 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/weather_icons/Sunny.png
-    - assets/images/weather_icons/PartlyCloudyDay.png
-    - assets/images/weather_icons/PartlyCloudyNight.png
-    - assets/images/weather_icons/Fog.png
-    - assets/images/weather_icons/HeavyRain.png
-    - assets/images/weather_icons/ModSnow.png
-    - assets/images/weather_icons/OccLightRain.png
-    - assets/images/weather_icons/ModSleet.png
-    - assets/images/weather_icons/CloudRainThunder.png
-    - assets/images/weather_icons/unknown.png
-    - assets/images/default_background.jpg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
+  assets:
+      - assets/weather-icons-png/
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

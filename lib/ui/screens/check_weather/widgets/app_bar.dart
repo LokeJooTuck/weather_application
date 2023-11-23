@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../data/models/weather.dart';
 
-AppBar header() {
+import '../../../../page_navigation.dart';
+import '../../add_location/add_new_location_screen.dart';
+
+AppBar header(BuildContext context) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
@@ -22,9 +25,7 @@ AppBar header() {
     actions: [
       IconButton(
         onPressed: () {
-          final weather = Weather.fromJson(latitude: 'adf', locationAreaName: "asdf", longitude: '12396', backgroundImage: '', weatherAPIResponseJsonObject:  jsonResponse);
-          print(weather);
-
+          navigateToPage(context, SavedLocationsPage());
         },
         icon: const Icon(
           Icons.menu,

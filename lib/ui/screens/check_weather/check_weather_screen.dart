@@ -19,42 +19,35 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
     var height = MediaQuery.of(context).size.height;
     return Stack(
       children: [
-         // Background Image with Dark Overlay
-      Image.asset(
-        'assets/images/default_background.jpg',
-        fit: BoxFit.cover,
-        height: double.infinity,
-        width: double.infinity,
-      ),
-      Container(
-        color: Colors.black.withOpacity(0.3),
-      ),
+        // Background Image with Dark Overlay
+        Image.asset(
+          'assets/images/default_background.jpg',
+          fit: BoxFit.cover,
+          height: double.infinity,
+          width: double.infinity,
+        ),
+        Container(
+          color: Colors.black.withOpacity(0.3),
+        ),
         Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: header(),
+          appBar: header(context),
           body: Column(
             children: [
               SizedBox(
                 height: height * 0.1,
               ),
+              SizedBox(height: height * 0.1, child: const Flexible(child: SelectedDateWidget())),
               SizedBox(
-                height: height * 0.1,
-                child: const Flexible(child: SelectedDateWidget())),
-               SizedBox(
                 height: height * 0.3,
-                 child: Flexible(
-                  
-                  flex: 2, child: TemperatureStatus()),
-               ),
+                child: Flexible(flex: 2, child: TemperatureStatus()),
+              ),
               SizedBox(
                 height: height * 0.03,
-              
               ),
               SizedBox(
                 height: height * 0.1,
-                child: const Flexible(
-                  flex: 2,
-                  child: OtherStatus()),
+                child: const Flexible(flex: 2, child: OtherStatus()),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
