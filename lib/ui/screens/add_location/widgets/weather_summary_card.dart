@@ -15,33 +15,31 @@ class WeatherSummaryCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Country',
-                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      shadows: <Shadow>[
-                        const Shadow(),
-                      ],
-                    ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Country',
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    shadows: <Shadow>[
+                      const Shadow(),
+                    ],
                   ),
-                  SizedBox(height: 8),
-                  Text('Weather state'),
-                  SizedBox(height: 22),
-                  Text('Humidity  50%'),
-                  SizedBox(height: 5),
-                  Text('Wind  15km/h'),
-                ],
-              ),
+                ),
+                SizedBox(height: 8),
+                Text('Weather state'),
+                SizedBox(height: 22),
+                Text('Humidity  50%'),
+                SizedBox(height: 5),
+                Text('Wind  15km/h'),
+              ],
             ),
             Column(
               children: const [
                 Image(
-                  image: AssetImage('assets/weather-icons-png/PartlyCloudyDay.png'),
+                  image: AssetImage('assets/images/weather_icons/PartlyCloudyDay.png'),
                   width: 20,
                   height: 20,
                 ),
