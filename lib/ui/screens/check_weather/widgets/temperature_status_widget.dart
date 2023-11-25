@@ -9,8 +9,8 @@ class TemperatureStatus extends StatelessWidget {
       builder: (context, constraints) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
+      children: [
+        Expanded(
               child: LayoutBuilder(
                 builder: (context,constraints) {
                 
@@ -67,9 +67,9 @@ class TemperatureStatus extends StatelessWidget {
                           
                         ),
                       ),
-                    ],
-                  );
-                }
+      ],
+    );
+  }
               ),
             )
           ],
