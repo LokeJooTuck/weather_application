@@ -1,61 +1,83 @@
 import 'package:hive/hive.dart';
+import "package:hive_flutter/hive_flutter.dart";
 import 'package:weather_application/data/services/database_service.dart';
 
 import '../models/weather.dart';
 
 // This is a hive database provider that will provide the database instance to the repository
-class DatabaseProvider extends DatabaseServive {
+class DatabaseProvider {
   static const String databaseName = "WeatherBox"; // name of the database
-  static const String weatherBoxName = "weather";  // name of the box
-
+  static const String weatherBoxName = "weather"; // name of the box
+  static const String favouriteBoxName = "favourite"; // name of the box
+  static const String favouriteKey = 'favourite_location';
+  bool _isInitialized = false;
   // Singleton instance of the DatabaseProvider
-  static final DatabaseProvider instance = DatabaseProvider._internal();
+  static final DatabaseProvider _instance =
+      DatabaseProvider._privateConstructor();
+
+  DatabaseProvider._privateConstructor();
 
   // Private constructor for the singleton pattern
-  DatabaseProvider._internal();
+  factory DatabaseProvider() {
+    return _instance;
+  }
 
   // Instance of the weather box collection
-  late Box _weatherBox;
+  late Box<Weather> _weatherBox;
+  late Box<String> _favouriteBox;
 
-  void init() async {
+  Future init() async {
+    // Initialize Hive
+    await Hive.initFlutter();
+
     // Initialize WeatherBox
     await BoxCollection.open(
-    databaseName, // Name of your database
-    {weatherBoxName}, // Names of your boxes
-  );
-    
+      databaseName, // Name of your database
+      {weatherBoxName, favouriteBoxName}, // Names of your boxes
+    );
 
-    // Register the WeatherAdapter adapter for the Weather class
+    // Register adapter
     Hive.registerAdapter(WeatherAdapter());
-
-    // Open the weather box collection
-    _weatherBox = await Hive.openBox(weatherBoxName);
+    _isInitialized = true;
   }
-  // Getter for the weatherBox property
-  Future<Box> get weatherBox async {
-    // If the weather box collection is not created, create and return it
-
-    if (!Hive.isBoxOpen(weatherBoxName)) {
-      _weatherBox = Hive.box(weatherBoxName);
-    }
-
-    return _weatherBox;
-  }
-
-//   void saveWeatherList(List<Weather> weatherList) {
-//   // Get the weatherBox
-//   var box = instance.weatherBox;
-
-//   // Clear the existing data in the box
-//   box.clear();
-
-//   // Save the list of Weather objects to the box
-//   for (var weather in weatherList) {
-//     box.add(weather);
-//   }
-// }
 
   
+  // Getter for the weatherBox property
+  Future<Box<Weather>> get weatherBox async {
+    // If the weather box collection is not created, create and return it
 
+    if (!_isInitialized) {
+      await init();
+    }
+
+    if (Hive.isBoxOpen(weatherBoxName) == false) {
+      _weatherBox = await Hive.openBox(weatherBoxName);
+      return _weatherBox;
+    } else {
+      _weatherBox = Hive.box<Weather>(weatherBoxName);
+      return _weatherBox;
+    }
+  }
+
+  // Getter for the favouriteBox property
+  Future<Box<String>> get favouriteBox async {
+    // If the favourite box collection is not created, create and return it
+    if (!_isInitialized) {
+      await init();
+    }
+
+    if (Hive.isBoxOpen(favouriteBoxName) == false) {
+      _favouriteBox = await Hive.openBox(favouriteBoxName);
+      return _favouriteBox;
+    } else {
+      _favouriteBox = Hive.box<String>(favouriteBoxName);
+      return _favouriteBox;
+    }
+  }
+
+  String get favouriteBoxKey {
+    return favouriteKey;
+  }
+  
 
 }
