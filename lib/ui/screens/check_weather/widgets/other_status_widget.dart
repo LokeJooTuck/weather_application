@@ -8,6 +8,12 @@ class OtherStatus extends StatefulWidget {
 }
 
 class _OtherStatusState extends State<OtherStatus> {
+  late String status;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Row(

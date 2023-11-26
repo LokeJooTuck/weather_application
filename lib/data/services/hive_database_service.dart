@@ -3,7 +3,7 @@ import 'package:weather_application/data/source/database_provider.dart';
 
 import '../models/weather.dart';
 
-class HiveDatabaseService implements DatabaseServive {
+class HiveDatabaseService implements DatabaseService {
 
   HiveDatabaseService({required this.databaseProvider});
   
@@ -34,6 +34,7 @@ class HiveDatabaseService implements DatabaseServive {
   Future<void> saveOrUpdateWeather (Weather weather) async {
     final weatherBox = await databaseProvider.weatherBox;
     weatherBox.put(weather.locationAreaName, weather);
+
     print('Weather is inserted/ updated');
   }
   
@@ -42,6 +43,12 @@ class HiveDatabaseService implements DatabaseServive {
     final favouriteBox = await databaseProvider.favouriteBox;
     favouriteBox.put(databaseProvider.favouriteBoxKey , locationName);
     print('Favourite location added');
+  }
+  
+  @override
+  Future<String?> getPreferLocation() async {
+    final favouriteBox = await databaseProvider.favouriteBox;
+    return favouriteBox.get(databaseProvider.favouriteBoxKey);
   }       
 
 }

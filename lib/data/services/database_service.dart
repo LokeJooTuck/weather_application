@@ -2,7 +2,7 @@ import 'package:weather_application/data/source/database_provider.dart';
 
 import '../models/weather.dart';
 
-abstract class DatabaseServive{
+abstract class DatabaseService{
   late DatabaseProvider databaseProvider;
 
 
@@ -17,6 +17,8 @@ abstract class DatabaseServive{
   //// Favourite Box ////
 
   Future<void> savePreferLocation(String locationName);
+
+  Future<String?> getPreferLocation();
 
 }
 

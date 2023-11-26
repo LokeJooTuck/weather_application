@@ -30,18 +30,22 @@ class DatabaseProvider {
     // Initialize Hive
     await Hive.initFlutter();
 
-    // Initialize WeatherBox
-    await BoxCollection.open(
-      databaseName, // Name of your database
-      {weatherBoxName, favouriteBoxName}, // Names of your boxes
-    );
+    if (!Hive.isBoxOpen(databaseName)) {
+      // Initialize WeatherBox
+      await BoxCollection.open(
+        databaseName, // Name of your database
+        {weatherBoxName, favouriteBoxName}, // Names of your boxes
+      );
+      
+    }
 
     // Register adapter
     Hive.registerAdapter(WeatherAdapter());
+    Hive.registerAdapter(WeatherForecastAdapter());
+    Hive.registerAdapter(WeatherStateAdapter());
     _isInitialized = true;
   }
 
-  
   // Getter for the weatherBox property
   Future<Box<Weather>> get weatherBox async {
     // If the weather box collection is not created, create and return it
@@ -78,6 +82,4 @@ class DatabaseProvider {
   String get favouriteBoxKey {
     return favouriteKey;
   }
-  
-
 }
