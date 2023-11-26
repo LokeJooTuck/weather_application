@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
@@ -33,13 +35,17 @@ class WeatherApiProvider {
       Uri.parse(
           'https://api.open-meteo.com/v1/forecast?latitude=$latitude&longitude=$longitude&hourly=relative_humidity_2m&daily=weather_code,temperature_2m_max,apparent_temperature_max,wind_speed_10m_max&forecast_days=7'),
     );
+    //get location name from lat and long
+    List<Placemark> placemarks= await placemarkFromCoordinates(latitude,longitude);
+        String locationName  = placemarks[0].locality??'';
+
 
     if (response.statusCode == 200) {
       final weather = Weather.fromJson(
           latitude: latitude,
           longitude: longitude,
           // backgroundImage:  backgroundImageURL?? '',
-          locationAreaName: 'Malaysia',
+          locationAreaName: locationName,
           weatherAPIResponseJsonObject: jsonDecode(response.body) as Map<String, dynamic>);
 
       return weather;
