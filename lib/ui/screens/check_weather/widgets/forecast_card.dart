@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_application/data/models/weather.dart';
+import 'package:weather_application/utils/services/wmo_service.dart';
 
 class ForcastCard extends StatefulWidget {
-  const ForcastCard({super.key, required this.weather});
-  final Weather weather;
+  const ForcastCard({super.key, required this.weatherForecast});
+  final WeatherForecast weatherForecast;
   @override
   State<ForcastCard> createState() => _ForcastCardState();
 }
 
 class _ForcastCardState extends State<ForcastCard> {
-  String formattedDate = DateFormat('EEE d').format(DateTime.now());
+  late String formattedDate;
+  late String weatherIconPath;
+
+  @override
+  void initState() {
+    super.initState();
+    formattedDate = DateFormat('EEE d').format(widget.weatherForecast.date);
+    weatherIconPath = WMOService.getWeatherImage(widget.weatherForecast.weatherState);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +48,7 @@ class _ForcastCardState extends State<ForcastCard> {
                 return AspectRatio(
                     aspectRatio: ratio,
                     child: Image.asset(
-                      'assets/images/weather_icons/HeavyRain.png',
+                      weatherIconPath,
                       fit: BoxFit.fill,
                       height: constraints.maxHeight,
                       width: constraints.maxWidth * 0.5,
@@ -49,7 +58,7 @@ class _ForcastCardState extends State<ForcastCard> {
           ),
           Expanded(child: LayoutBuilder(builder: (context, constraints) {
             return Text(
-              '22 °C',
+              '${widget.weatherForecast.temperature} °C',
               style: Theme.of(context)
                   .textTheme
                   .titleLarge
@@ -58,7 +67,7 @@ class _ForcastCardState extends State<ForcastCard> {
           })),
           Expanded(child: LayoutBuilder(builder: (context, constraints) {
             return Text(
-              '1-5',
+              '${widget.weatherForecast.windSpeed}',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: Colors.white,
                   ),

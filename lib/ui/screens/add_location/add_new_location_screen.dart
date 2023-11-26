@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_application/ui/screens/add_location/widgets/add_new_location_button.dart';
 import 'package:weather_application/ui/screens/add_location/widgets/weather_summary_card.dart';
+import 'package:weather_application/ui/screens/check_weather/check_weather_screen.dart';
+
+import '../../../page_navigation.dart';
 
 class SavedLocationsPage extends StatelessWidget {
   const SavedLocationsPage({super.key});
@@ -61,7 +64,10 @@ class _SavedLocationsPageContentState extends State<SavedLocationsPageContent> {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+
+                  navigateToPage(context, const CheckWeatherScreen());
+                },
                 icon: const Icon(
                   Icons.search,
                   size: 40,
