@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:weather_application/ui/screens/check_weather/widgets/forcast_list.dart';
 import 'package:weather_application/ui/screens/check_weather/widgets/other_status_widget.dart';
@@ -14,6 +16,7 @@ class CheckWeatherScreen extends StatefulWidget {
 }
 
 class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -59,7 +62,6 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
                 height: height * 0.2,
                 child: ForcastList(),
               ),
-          
             ],
           ),
         ),

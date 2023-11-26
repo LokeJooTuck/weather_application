@@ -1,5 +1,12 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:weather_application/data/models/weather.dart';
+import 'package:weather_application/data/services/hive_database_service.dart';
+import 'package:weather_application/data/source/database_provider.dart';
+import 'package:weather_application/ui/screens/check_weather/widgets/forcast_list.dart';
+
+import '../../../../data/services/database_service.dart';
 import '../../../../page_navigation.dart';
 import '../../add_location/add_new_location_screen.dart';
 
@@ -22,8 +29,8 @@ AppBar header(BuildContext context) {
     ),
     actions: [
       IconButton(
-        onPressed: () {
-          navigateToPage(context, SavedLocationsPage());
+        onPressed: () async {
+          navigateToPage(context, const SavedLocationsPage());
         },
         icon: const Icon(
           Icons.menu,
