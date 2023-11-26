@@ -2,6 +2,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:weather_application/ui/screens/check_weather/widgets/forecast_list.dart';
 
 import '../../../../data/models/weather.dart';
 import '../../../../data/repository/weather_repository.dart';
@@ -21,9 +22,33 @@ class CheckWeatherBloc extends Bloc<CheckWeatherEvent, CheckWeatherState> {
   void _mapGetWeatherToState(GetWeather event, Emitter<CheckWeatherState> emit) async {
     emit(state.copyWith(status: CheckWeatherStatus.loading));
     try {
+      // check favourite location
+      // if favourite location is null, get current location
+      // if favourite location is not null, get weather from prefer location
 
-      final weather = await weatherRepository.fetchWeather(latitude: 3.1073, longitude: 101.6067);
-      emit(state.copyWith(status: CheckWeatherStatus.loaded, weather: weather));
+      String? preferLocation = await weatherRepository.fetchFavouriteLocation();
+      Weather? oldFavouriteWeather;
+      Weather? newWeather;
+      
+      // if(preferLocation != null){
+      //   oldFavouriteWeather = await weatherRepository.getWeather(locationName: preferLocation);
+     
+      //   if(oldFavouriteWeather != null){
+      //   newWeather = await weatherRepository.fetchWeather(latitude: oldFavouriteWeather.latitude, longitude: oldFavouriteWeather.longitude);
+      //   return emit(state.copyWith(status: CheckWeatherStatus.loaded, weather: newWeather));
+      // }
+     
+      // }
+
+      
+
+      
+
+     
+    
+
+      emit(state.copyWith(status: CheckWeatherStatus.loaded, weather: newWeather));
+      emit(state.copyWith(status: CheckWeatherStatus.loading, weather: newWeather));
     } catch (e) {
       emit(state.copyWith(status: CheckWeatherStatus.error, errorMessage: e.toString()));
     }

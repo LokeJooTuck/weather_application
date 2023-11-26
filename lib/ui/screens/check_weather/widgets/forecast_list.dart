@@ -20,8 +20,8 @@ List<WeatherForecast> forecastList = List.generate(10, (index) => forcast);
 
 // Generate dummy data for Weather class
 Weather dummyWeather = Weather(
-    longitude: '-74.006',
-    latitude: '40.7128',
+    longitude: -74.006,
+    latitude: 40.7128,
     locationAreaName: 'Kuala Lumpur',
     lastUpdated: DateTime.now(),
     backgroundImage: 'assets/images/backgrounds/night.jpg',

@@ -8,6 +8,7 @@ import 'package:weather_application/ui/screens/check_weather/widgets/forecast_li
 import 'package:weather_application/ui/screens/check_weather/widgets/other_status_widget.dart';
 import 'package:weather_application/ui/screens/check_weather/widgets/selected_date_widget.dart';
 import 'package:weather_application/ui/screens/check_weather/widgets/temperature_status_widget.dart';
+import 'package:weather_application/utils/extensions/weather_state_extensions.dart';
 
 import 'widgets/app_bar.dart';
 
@@ -32,11 +33,27 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
     return Stack(
       children: [
         // Background Image with Dark Overlay
-        Image.asset(
-          'assets/images/default_background.jpg',
-          fit: BoxFit.cover,
-          height: double.infinity,
-          width: double.infinity,
+        BlocBuilder<CheckWeatherBloc, CheckWeatherState>(
+          builder: (context, state) {
+            if(state.status == CheckWeatherStatus.loaded){
+              if(state.weather == null) return Container();
+              return Image.network(
+                'https://source.unsplash.com/featured/?${state.weather!.weatherForecast[0].weatherState.toWeatherStateString()}',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+              );
+            }else{
+               return Image.asset(
+              'assets/images/default_background.jpg',
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
+            );
+            }
+
+           
+          }
         ),
         Container(
           color: Colors.black.withOpacity(0.3),
