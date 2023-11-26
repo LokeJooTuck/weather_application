@@ -20,7 +20,7 @@ class WeatherSummaryCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Country',
+                    'Malaysia',
                     style: Theme.of(context).textTheme.bodyText1?.copyWith(
                       fontSize: 24,
                       fontWeight: FontWeight.w700,
@@ -35,7 +35,7 @@ class WeatherSummaryCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Weather state',
+                    'Cloudy',
                     style: Theme.of(context).textTheme.bodyText1?.copyWith(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -54,7 +54,7 @@ class WeatherSummaryCard extends StatelessWidget {
                             ),
                       ),
                       Text(
-                        '50%',
+                        '60%',
                         style: Theme.of(context).textTheme.bodyText1?.copyWith(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
@@ -95,7 +95,7 @@ class WeatherSummaryCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '33',
+                      '29',
                       style: Theme.of(context).textTheme.bodyText1?.copyWith(
                             fontSize: 48,
                             fontWeight: FontWeight.w500,

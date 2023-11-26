@@ -54,7 +54,7 @@ class WeatherApiProvider {
   }
 
   Future<List<Weather>> fetchSavedLocationsWeather(
-      List<double> latitude, List<double> longitude, List<String> countryNames) async {
+      {required List<double> latitude, required List<double> longitude, required List<String> countryNames}) async {
     var savedLocationsWeather = <Weather>[];
 
     if (latitude.isNotEmpty && longitude.isNotEmpty) {

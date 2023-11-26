@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_application/ui/screens/add_location/widgets/add_new_location_button.dart';
 import 'package:weather_application/ui/screens/add_location/widgets/weather_summary_card.dart';
@@ -78,7 +77,7 @@ class _SavedLocationsPageContentState extends State<SavedLocationsPageContent> {
           const SizedBox(height: 30),
           const WeatherSummaryCard(),
           const SizedBox(height: 24),
-          AddNewLocationButton(),
+          const AddNewLocationButton(),
         ],
       ),
     );
