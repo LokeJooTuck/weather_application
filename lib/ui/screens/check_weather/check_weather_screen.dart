@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:weather_application/ui/screens/check_weather/widgets/forcast_list.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_application/data/models/weather.dart';
+import 'package:weather_application/ui/screens/check_weather/bloc/check_weather_bloc.dart';
+import 'package:weather_application/ui/screens/check_weather/widgets/forecast_list.dart';
 import 'package:weather_application/ui/screens/check_weather/widgets/other_status_widget.dart';
 import 'package:weather_application/ui/screens/check_weather/widgets/selected_date_widget.dart';
 import 'package:weather_application/ui/screens/check_weather/widgets/temperature_status_widget.dart';
@@ -16,6 +19,12 @@ class CheckWeatherScreen extends StatefulWidget {
 }
 
 class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<CheckWeatherBloc>(context).add(GetWeather());
+  }
 
   @override
   Widget build(BuildContext context) {

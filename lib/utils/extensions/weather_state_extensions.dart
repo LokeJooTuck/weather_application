@@ -4,7 +4,7 @@ import '../../constants/enums/weather_state.dart';
 import '../../data/models/weather.dart';
 
 extension WeatherStateString on WeatherState {
-  String toDisplayString() {
+  String toWeatherStateString() {
     switch (this) {
       case WeatherState.clearSky:
         return 'Clear Sky';

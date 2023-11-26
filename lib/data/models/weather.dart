@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:hive/hive.dart';
 import 'package:weather_application/utils/services/wmo_service.dart';
 
@@ -128,21 +130,21 @@ class WeatherForecast extends HiveObject {
   });
 
   static List<WeatherForecast> generateForecastListFromJson(Map<String, dynamic> weatherAPIResponseJsonObject) {
-    
+   
     final dailyJson = weatherAPIResponseJsonObject['daily'];
     final hourlyJson = weatherAPIResponseJsonObject['hourly'];
 
-    List<String> time = dailyJson['time'];
-    List<int> weatherCode = dailyJson['weather_code'];
+    List<String> time = List<String>.from(dailyJson['time']) ;
+    List<int> weatherCode = List<int>.from(dailyJson['weather_code']) ;
 
     List<double> temperature2mMax =
-        dailyJson['temperature_2m_max'];
+        List<double>.from(dailyJson['temperature_2m_max']) ;
     List<double> apparentTemperatureMax =
-        dailyJson['apparent_temperature_max'];
+        List<double>.from( dailyJson['apparent_temperature_max']);
     List<double> windSpeed10mMax =
-        dailyJson['wind_speed_10m_max'];
+        List<double>.from(dailyJson['wind_speed_10m_max']) ;
     List<int> relativeHumidity2m =
-        hourlyJson['relative_humidity_2m'];
+        List<int>.from(hourlyJson['relative_humidity_2m']) ;
 
     final List<WeatherForecast> weatherForecasts = [];
 
