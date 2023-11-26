@@ -46,7 +46,7 @@ class HiveDatabaseService implements DatabaseService {
   }
   
   @override
-  Future<String?> fetchFavouriteLocation() async {
+  Future<String?> getFavouriteLocation() async {
     final favouriteBox = await databaseProvider.favouriteBox;
     return favouriteBox.get(databaseProvider.favouriteBoxKey);
   }       

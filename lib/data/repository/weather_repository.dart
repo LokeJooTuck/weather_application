@@ -24,7 +24,28 @@ class WeatherRepository {
   }
 
   //// Favourite Box ////
-  Future<String?> fetchFavouriteLocation() async {
-    return await hiveDatabaseService.fetchFavouriteLocation();
+  Future<String?> getFavouriteLocation() async {
+    return await hiveDatabaseService.getFavouriteLocation();
+  }
+
+  Future<List<Weather>?> fetchSavedLocationsWeather() async {
+    final savedLocationWeatherList = await getWeatherList();
+
+    if (savedLocationWeatherList == null || savedLocationWeatherList!.isEmpty) {
+      return savedLocationWeatherList;
+    }
+
+    final List<double> latitudeList = [];
+    final List<double> longitudeList = [];
+    final List<String> countryNameList = [];
+
+    for (var i = 0; i < savedLocationWeatherList.length; i++) {
+      latitudeList.add(savedLocationWeatherList[i].latitude);
+      longitudeList.add(savedLocationWeatherList[i].longitude);
+      countryNameList.add(savedLocationWeatherList[i].locationAreaName);
+    }
+
+    return weatherApiProvider.fetchSavedLocationsWeather(
+        latitude: latitudeList, longitude: longitudeList, countryNames: countryNameList);
   }
 }

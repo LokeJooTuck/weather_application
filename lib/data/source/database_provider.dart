@@ -30,14 +30,10 @@ class DatabaseProvider {
     // Initialize Hive
     await Hive.initFlutter();
 
-    if (!Hive.isBoxOpen(databaseName)) {
-      // Initialize WeatherBox
-      await BoxCollection.open(
-        databaseName, // Name of your database
-        {weatherBoxName, favouriteBoxName}, // Names of your boxes
-      );
+    await Hive.openBox<Weather>(weatherBoxName);
+    await Hive.openBox<String>(favouriteBoxName);
+
       
-    }
 
     // Register adapter
     Hive.registerAdapter(WeatherAdapter());
