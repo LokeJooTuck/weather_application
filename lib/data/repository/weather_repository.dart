@@ -25,10 +25,18 @@ class WeatherRepository {
     return await hiveDatabaseService.getWeatherList();
   }
 
+  Future<void> saveOrUpdateWeather (Weather weather) async {
+    await hiveDatabaseService.saveOrUpdateWeather(weather);
+  }
+
   //// Favourite Box //// 
   Future<String?> getFavouriteLocation() async {
 
     return await hiveDatabaseService.getFavouriteLocation();
+  }
+
+  Future<void> savePreferLocation(String locationName) async {
+    await hiveDatabaseService.savePreferLocation(locationName);
   }
 
  
