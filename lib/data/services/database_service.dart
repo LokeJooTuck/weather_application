@@ -18,7 +18,7 @@ abstract class DatabaseService{
 
   Future<void> savePreferLocation(String locationName);
 
-  Future<String?> getPreferLocation();
+  Future<String?> fetchFavouriteLocation();
 
 }
 

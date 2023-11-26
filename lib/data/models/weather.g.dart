@@ -17,8 +17,8 @@ class WeatherAdapter extends TypeAdapter<Weather> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Weather(
-      latitude: fields[0] as String,
-      longitude: fields[1] as String,
+      latitude: fields[0] as double,
+      longitude: fields[1] as double,
       locationAreaName: fields[2] as String,
       lastUpdated: fields[3] as DateTime,
       backgroundImage: fields[4] as String,

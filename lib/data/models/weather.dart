@@ -51,10 +51,10 @@ enum WeatherState {
 @HiveType(typeId: 0) // The typeId should be unique across all HiveObject classes
 class Weather extends HiveObject {
   @HiveField(0)
-  final String latitude;
+  final double latitude;
 
   @HiveField(1)
-  final String longitude;
+  final double longitude;
 
   @HiveField(2)
   final String locationAreaName;
@@ -77,7 +77,7 @@ class Weather extends HiveObject {
     required this.weatherForecast,
   });
 
-  factory Weather.fromJson({required String latitude ,required String longitude, required String locationAreaName, String backgroundImage = '' ,required Map<String, dynamic> weatherAPIResponseJsonObject}) {
+  factory Weather.fromJson({required double latitude ,required double longitude, required String locationAreaName, String backgroundImage = '' ,required Map<String, dynamic> weatherAPIResponseJsonObject}) {
     final List<WeatherForecast> forecasts =
         WeatherForecast.generateForecastListFromJson(weatherAPIResponseJsonObject);
 
