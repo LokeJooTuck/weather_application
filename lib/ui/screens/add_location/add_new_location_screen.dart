@@ -65,7 +65,6 @@ class _SavedLocationsPageContentState extends State<SavedLocationsPageContent> {
               ),
               IconButton(
                 onPressed: () {
-
                   navigateToPage(context, const CheckWeatherScreen());
                 },
                 icon: const Icon(

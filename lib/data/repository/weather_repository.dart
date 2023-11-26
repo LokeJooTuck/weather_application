@@ -7,8 +7,4 @@ class WeatherRepository {
   Future<Weather> fetchWeather({required double latitude, required double longitude}) async {
     return weatherApiProvider.fetchWeather(latitude, longitude);
   }
-
-  // Future<List<Weather>> fetchSavedLocationsWeather() {
-  //
-  // }
 }
