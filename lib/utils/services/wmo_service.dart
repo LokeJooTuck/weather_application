@@ -54,11 +54,11 @@ class WMOService {
 
   // call this function to get the image related to the weather state code
 
-  String getWeatherImage(WeatherState weatherState) {
+  static String getWeatherImage(WeatherState weatherState) {
     DateTime now = DateTime.now();
     bool isDay = now.hour >= 6 && now.hour <= 18;
 
-    String basePath = 'assets/images/weather-icons';
+    String basePath = 'assets/images/weather_icons';
 
     switch (weatherState) {
       case WeatherState.clearSky:
