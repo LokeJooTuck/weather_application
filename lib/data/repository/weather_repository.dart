@@ -26,9 +26,9 @@ class WeatherRepository {
   }
 
   //// Favourite Box //// 
-  Future<String?> fetchFavouriteLocation() async {
+  Future<String?> getFavouriteLocation() async {
 
-    return await hiveDatabaseService.fetchFavouriteLocation();
+    return await hiveDatabaseService.getFavouriteLocation();
   }
 
  
