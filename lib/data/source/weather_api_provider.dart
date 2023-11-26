@@ -10,7 +10,7 @@ import '../models/weather.dart';
 class WeatherApiProvider {
   Future<Weather> fetchWeather(double latitude, double longitude) async {
     bool hasConnection = await InternetConnectionCheckerPlus().hasConnection;
-    if(!hasConnection){
+    if (!hasConnection) {
       Fluttertoast.showToast(
           msg: "No internet connection. Try again.",
           backgroundColor: Colors.red,
@@ -28,9 +28,6 @@ class WeatherApiProvider {
     // }catch(e){
     //   backgroundImageURL = null;
     // }
-    
-
-
 
     final response = await http.get(
       Uri.parse(
@@ -75,8 +72,8 @@ class WeatherApiProvider {
         for (var i = 0; i < weatherJsonArray.length; i++) {
           savedLocationsWeather.add(
             Weather.fromJson(
-                latitude: latitude[i].toString(),
-                longitude: longitude[i].toString(),
+                latitude: latitude[i],
+                longitude: longitude[i],
                 locationAreaName: countryNames[i],
                 weatherAPIResponseJsonObject: weatherJsonArray[i] as Map<String, dynamic>),
           );
