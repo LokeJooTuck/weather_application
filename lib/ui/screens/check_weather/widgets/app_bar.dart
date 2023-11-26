@@ -52,7 +52,7 @@ AppBar header(BuildContext context) {
 Widget _buildTitleText(CheckWeatherStatus status, CheckWeatherState state){
   switch (status) {
     case CheckWeatherStatus.loading:
-      return circularProgressIndicator();
+      return Container();
     case CheckWeatherStatus.loaded:
       if(state.weather == null) return const Text('');
       return Text(state.weather!.locationAreaName, style: TextStyle(color: Colors.white));

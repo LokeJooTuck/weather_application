@@ -3,6 +3,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:weather_application/ui/screens/check_weather/widgets/forecast_list.dart';
 import 'package:weather_application/utils/services/location_service.dart';
 
@@ -28,21 +29,26 @@ class CheckWeatherBloc extends Bloc<CheckWeatherEvent, CheckWeatherState> {
       // if favourite location is null, get current location
       // if favourite location is not null, get weather from prefer location
 
-      String? preferLocation = await weatherRepository.getFavouriteLocation();
+      String? favouriteLocation = await weatherRepository.getFavouriteLocation();
       Weather? oldFavouriteWeather;
       Weather? newWeather;
       
-      if(preferLocation != null){
-        oldFavouriteWeather = await weatherRepository.getWeather(locationName: preferLocation);
+      if(favouriteLocation != null){
+        oldFavouriteWeather = await weatherRepository.getWeather(locationName: favouriteLocation);
      
         if(oldFavouriteWeather != null){
         newWeather = await weatherRepository.fetchWeather(latitude: oldFavouriteWeather.latitude, longitude: oldFavouriteWeather.longitude);
+        weatherRepository.saveOrUpdateWeather(newWeather);
         return emit(state.copyWith(status: CheckWeatherStatus.loaded, weather: newWeather));
-      }
+        }else{
+          return emit(state.copyWith(status: CheckWeatherStatus.error, errorMessage: 'No saved location nor current location found'));
+        }
 
       }else if(await LocationService.handleLocationPermission() == true){
         Map<String, double> currentPosition = await LocationService.getCurrentPosition();
         newWeather = await weatherRepository.fetchWeather(latitude: currentPosition['latitude']!, longitude: currentPosition['longitude']!);
+        weatherRepository.savePreferLocation(newWeather.locationAreaName);
+        weatherRepository.saveOrUpdateWeather(newWeather);
         return emit(state.copyWith(status: CheckWeatherStatus.loaded, weather: newWeather));
       }else{
         return emit(state.copyWith(status: CheckWeatherStatus.error, errorMessage: 'No saved location nor current location found'));

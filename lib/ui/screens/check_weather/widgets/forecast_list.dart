@@ -52,7 +52,7 @@ class ForcastList extends StatelessWidget {
       return Container();
     }
     else if (state.status == CheckWeatherStatus.error) {
-      return const Text('To access the weather forecast:\n\nEnable your GPS or save a specific location.', style: TextStyle(),textAlign: TextAlign.center,);
+      return  Text(state.errorMessage?? '', style: TextStyle(),textAlign: TextAlign.center,); //'To access the weather forecast:\n\nEnable your GPS or save a specific location.'
     }
     else if (state.status == CheckWeatherStatus.loading) {
       return  circularProgressIndicator();

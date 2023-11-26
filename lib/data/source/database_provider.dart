@@ -30,8 +30,7 @@ class DatabaseProvider {
     // Initialize Hive
     await Hive.initFlutter();
 
-    await Hive.openBox<Weather>(weatherBoxName);
-    await Hive.openBox<String>(favouriteBoxName);
+    
 
       
 
@@ -39,6 +38,9 @@ class DatabaseProvider {
     Hive.registerAdapter(WeatherAdapter());
     Hive.registerAdapter(WeatherForecastAdapter());
     Hive.registerAdapter(WeatherStateAdapter());
+
+    await Hive.openBox<Weather>(weatherBoxName);
+    await Hive.openBox<String>(favouriteBoxName);
     _isInitialized = true;
   }
 

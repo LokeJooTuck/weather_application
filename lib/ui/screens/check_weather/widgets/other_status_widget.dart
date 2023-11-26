@@ -33,7 +33,7 @@ class _OtherStatusState extends State<OtherStatus> {
       return Container();
     }
     else if (state.status == CheckWeatherStatus.loading) {
-      return circularProgressIndicator();
+      return Container();
     } else if (state.status == CheckWeatherStatus.loaded) {
       if(state.weather == null) return Container();
       return _buildOtherStatusDetails(context, state.weather!.weatherForecast[0]);

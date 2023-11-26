@@ -29,7 +29,7 @@ class SelectedDateWidget extends StatelessWidget {
       return Container();
     }
     else if (state.status == CheckWeatherStatus.loading) {
-      return circularProgressIndicator();
+      return Container();
     } else if (state.status == CheckWeatherStatus.loaded) {
       if(state.weather == null) return Container();
       return _buildSelectedDateDetails(context, state.weather!);
