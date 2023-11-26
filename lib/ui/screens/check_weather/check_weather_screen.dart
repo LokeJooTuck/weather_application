@@ -55,10 +55,10 @@ class _CheckWeatherScreenState extends State<CheckWeatherScreen> {
                 height: MediaQuery.of(context).size.height * 0.03,
               ),
     
-              // SizedBox(
-              //   height: height * 0.2,
-              //   child: ForcastList(),
-              // ),
+              SizedBox(
+                height: height * 0.2,
+                child: ForcastList(),
+              ),
           
             ],
           ),
