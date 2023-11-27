@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/widgets.dart';
 import 'package:weather_application/data/services/database_service.dart';
 import 'package:weather_application/data/source/database_provider.dart';
 
@@ -35,14 +38,14 @@ class HiveDatabaseService implements DatabaseService {
     final weatherBox = await databaseProvider.weatherBox;
     weatherBox.put(weather.locationAreaName, weather);
 
-    print('Weather is inserted/ updated');
+    log('Weather is inserted/ updated');
   }
   
   @override
   Future<void> savePreferLocation(String locationName) async {
     final favouriteBox = await databaseProvider.favouriteBox;
     favouriteBox.put(databaseProvider.favouriteBoxKey , locationName);
-    print('Favourite location added');
+    log('Favourite location added');
   }
   
   @override

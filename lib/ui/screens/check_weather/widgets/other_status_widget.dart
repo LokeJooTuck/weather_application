@@ -49,7 +49,7 @@ class _OtherStatusState extends State<OtherStatus> {
           Expanded(
             child: _buildStatusIcon(context,
                 icon: Icons.water_drop_outlined,
-                status: 'HUMINITY',
+                status: 'HUMIDITY',
                 value: weatherForecast.humidity.toString()),
           ),
           Expanded(

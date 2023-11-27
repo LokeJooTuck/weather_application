@@ -39,7 +39,6 @@ class WeatherApiProvider {
     List<Placemark> placemarks= await placemarkFromCoordinates(latitude,longitude);
         String locationName  = placemarks[0].locality??'';
 
-
     if (response.statusCode == 200) {
       final weather = Weather.fromJson(
           latitude: latitude,
